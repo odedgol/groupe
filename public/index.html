@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:900|Roboto:400,500">
+  <link rel="stylesheet" href="https://unpkg.com/antd/dist/antd.css" />
+  <script src="https://unpkg.com/@babel/standalone@7.4.4/babel.js"></script>    
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/antd/4.16.10/antd-with-locales.min.js"></script>
+    <style>
+      .my-progress-bar .ant-progress-bg {
+  background-color: chartreuse !important;
+  height: 20px !important;
+  width:50%;
+}
+     .my-progress-bar .ant-progress-outer {
+       width: 50%;
+     }
+    </style>
+  </head>
+<script>
+  Babel.registerPreset("my-preset", {
+    presets: [
+      [Babel.availablePresets["es2015"], { "modules": false }],
+      [Babel.availablePresets["react"]]
+
+    ],
+    plugins: [
+      [Babel.availablePlugins["transform-modules-umd"]]
+    ],
+    moduleId: "main"
+  });
+</script>
+<script type="text/babel" data-presets="my-preset">
+
+const { Progress, Typography } = antd;
+const { Text } = Typography;
+  class Greeting extends React.Component {
+      render() {
+          return ( <div>
+            <Text style={{position:'absolute', flex:0, zIndex:100}}>{this.props.percent} Buyers </Text>
+            <Progress className={'my-progress-bar'} strokeLinecap={'square'} showInfo={false} percent={this.props.percent}>
+              </Progress>
+            </div>);
+      }
+  }
+  ReactDOM.render(
+      <Greeting percent={40} />,
+      document.getElementById('participates1')
+  );
+  ReactDOM.render(
+      <Greeting percent={100}/>,
+      document.getElementById('participates2')
+  );
+  ReactDOM.render(
+      <Greeting percent={10}/>,
+      document.getElementById('participates3')
+  );
+  ReactDOM.render(
+      <Greeting percent={50}/>,
+      document.getElementById('participates4')
+  );
+  ReactDOM.render(
+      <Greeting />,
+      document.getElementById('participates5')
+  );
+  </script>
+  <script type="text/babel">
+    class Greeting extends React.Component {
+        render() {
+            return (<p>Timer</p>);
+        }
+    }
+    ReactDOM.render(
+        <Greeting />,
+        document.getElementById('timer')
+    );
+    </script>
+<body>
+  <div id="app"></div>
+</body>
+
+</html>
