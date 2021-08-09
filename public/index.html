@@ -7,19 +7,38 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:900|Roboto:400,500">
   <link rel="stylesheet" href="https://unpkg.com/antd/dist/antd.css" />
+  <link href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" rel="stylesheet"/>
   <script src="https://unpkg.com/@babel/standalone@7.4.4/babel.js"></script>    
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/antd/4.16.10/antd-with-locales.min.js"></script>
     <style>
       .my-progress-bar .ant-progress-bg {
-  background-color: chartreuse !important;
   height: 20px !important;
   width:50%;
 }
      .my-progress-bar .ant-progress-outer {
-       width: 50%;
+       width: 90%;
      }
+     .arrow-right {
+  background-color: red;
+  box-shadow: 0 0 3px 2px rgba(0,0,0,0.8);
+  height: 80px;
+  left: -50px;
+  position: absolute;
+  top: -50px;
+  width: 100px;
+  -webkit-transform: rotate(-45deg);
+}
+.arrow-right span {
+  color: #f5f5f5;
+  font-family: sans-serif;
+  font-size: 1.005em;
+  left: 28px;
+  top: 78px;
+  position: absolute;
+  width: 80px;
+}
     </style>
   </head>
 <script>
@@ -39,25 +58,29 @@
 
 const { Progress, Typography } = antd;
 const { Text } = Typography;
-  class Greeting extends React.Component {
+class Greeting extends React.Component {
       render() {
           return ( <div>
-            <Text style={{position:'absolute', flex:0, zIndex:100}}>{this.props.percent} Buyers </Text>
-            <Progress className={'my-progress-bar'} strokeLinecap={'square'} showInfo={false} percent={this.props.percent}>
+            <div style={{float:'left', width:'60%'}}>
+            <Text style={{position:'absolute', flex:0, zIndex:100}}>&nbsp;&nbsp;  {this.props.percent} Joined </Text>
+            <Progress   strokeColor={this.props.percent < 90 ? "red" : "orange"}
+ className={'my-progress-bar'} strokeLinecap={'square'} showInfo={false} percent={this.props.percent}>
               </Progress>
+</div>
+<div style={{float:'left'}}>{this.props.left} Left</div>
             </div>);
       }
   }
   ReactDOM.render(
-      <Greeting percent={40} />,
+      <Greeting percent={40} left={60} />,
       document.getElementById('participates1')
   );
   ReactDOM.render(
-      <Greeting percent={100}/>,
+      <Greeting percent={100} left={0} />,
       document.getElementById('participates2')
   );
   ReactDOM.render(
-      <Greeting percent={10}/>,
+      <Greeting percent={10} left={90}/>,
       document.getElementById('participates3')
   );
   ReactDOM.render(
@@ -65,7 +88,7 @@ const { Text } = Typography;
       document.getElementById('participates4')
   );
   ReactDOM.render(
-      <Greeting />,
+    <Greeting percent={60}/>,
       document.getElementById('participates5')
   );
   </script>
@@ -75,11 +98,12 @@ const { Text } = Typography;
             return (<p>Timer</p>);
         }
     }
-    ReactDOM.render(
-        <Greeting />,
-        document.getElementById('timer')
-    );
+    // ReactDOM.render(
+    //     <Greeting />,
+    //     document.getElementById('timer')
+    // );
     </script>
+    
 <body>
   <div id="app"></div>
 </body>

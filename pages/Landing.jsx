@@ -4,5 +4,12 @@ import Test from '../pages/Test';
 import './Landing.css';
 
 //const Landing = () => <Cracked>groupe</Cracked>;
-const test = () => <Test></Test>;
-export default test;
+//const test = () => <Test></Test>;
+//export default test;
+export default function RenderFunc() {
+  return (
+    <div>
+      <Test></Test>
+    </div>
+  );
+}
