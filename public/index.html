@@ -67,7 +67,27 @@ var x = setInterval(function() {
   if(document.getElementById("timer1")) {
     document.getElementById("timer1").innerHTML = hours + ":" + minutes + ":" + seconds ;
   }
+  if(document.getElementById("timer2")) {
+    document.getElementById("timer2").innerHTML = hours + ":" + minutes + ":" + seconds ;
+  }
+  if(document.getElementById("timer3")) {
+    document.getElementById("timer3").innerHTML = hours + ":" + minutes + ":" + seconds ;
+  }
+  if(document.getElementById("timer4")) {
+    document.getElementById("timer4").innerHTML = hours + ":" + minutes + ":" + seconds ;
+  }
 
+  if(document.getElementById("timer5")) {
+    document.getElementById("timer5").innerHTML = hours + ":" + minutes + ":" + seconds ;
+  }
+
+  if(document.getElementById("timer6")) {
+    document.getElementById("timer6").innerHTML = hours + ":" + minutes + ":" + seconds ;
+  }
+
+  if(document.getElementById("timer7")) {
+    document.getElementById("timer7").innerHTML = hours + ":" + minutes + ":" + seconds ;
+  }
   // If the count down is finished, write some text
   if (distance < 0) {
     clearInterval(x);
@@ -98,35 +118,43 @@ class Greeting extends React.Component {
       render() {
           return ( <div>
             <div style={{float:'left', width:'60%'}}>
-            <Text style={{position:'absolute', flex:0, zIndex:100, paddingTop:'1px'}}>&nbsp;&nbsp;  {this.props.percent} Joined </Text>
-            <Progress   strokeColor={this.props.percent < 90 ? "orange" : "#4cd807"}
- className={'my-progress-bar'} strokeLinecap={'square'} showInfo={false} percent={this.props.percent}>
+            <Text style={{position:'absolute', flex:0, zIndex:100, paddingTop:'1px'}}>&nbsp;&nbsp;  {this.props.left == 0 ? "0 left" : `only ${this.props.left} left!`}</Text>
+            <Progress   strokeColor={(this.props.percent) / 10 < 90 ? "orange" : "#4cd807"}
+ className={'my-progress-bar'} strokeLinecap={'square'} showInfo={false} percent={(this.props.percent) / 10}>
               </Progress>
 </div>
-<div style={{float:'left'}}>{this.props.left == 0 ? "0 left" : `only ${this.props.left} left!`}</div>
+<div style={{float:'left'}}>{this.props.percent} Joined</div>
             </div>);
       }
   }
   ReactDOM.render(
-      <Greeting percent={40} left={60} />,
+      <Greeting percent={400} left={600} />,
       document.getElementById('participates1')
   );
   ReactDOM.render(
-      <Greeting percent={100} left={0} />,
+      <Greeting percent={1000} left={0} />,
       document.getElementById('participates2')
   );
   ReactDOM.render(
-      <Greeting percent={10} left={90}/>,
+      <Greeting percent={100} left={900}/>,
       document.getElementById('participates3')
   );
   ReactDOM.render(
-      <Greeting percent={50} left={50}/>,
+      <Greeting percent={500} left={500}/>,
       document.getElementById('participates4')
   );
   ReactDOM.render(
-    <Greeting percent={60} left={40}/>,
+    <Greeting percent={600} left={400}/>,
       document.getElementById('participates5')
   );
+  ReactDOM.render(
+    <Greeting percent={9000} left={100}/>,
+      document.getElementById('participates6')
+  );
+  // ReactDOM.render(
+  //   <Greeting percent={100} left={1}/>,
+  //     document.getElementById('participates7')
+  // );
   </script>
   <script type="text/babel">
     class Greeting extends React.Component {
