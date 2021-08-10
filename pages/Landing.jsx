@@ -6,7 +6,7 @@ import './Landing.css';
 //const Landing = () => <Cracked>groupe</Cracked>;
 //const test = () => <Test></Test>;
 //export default test;
-export default function RenderFunc() {
+export default function MaineBay() {
   return (
     <div>
       <Test></Test>
